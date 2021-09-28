@@ -1,0 +1,15 @@
+---
+title: "Arbeidskrav-2"
+author: "Kristoffer Solum"
+date: "28 9 2021"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+
+hei vetle ser du dettte?
+  
+  
+```
