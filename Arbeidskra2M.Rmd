@@ -12,7 +12,7 @@ library(tidyverse)
   
 
 library(readxl)
-Data <- read_excel("Data.xlsx")
+Data <- read_excel("Data.xlsx",na = "NA")
 
 dat <- Data %>%
   select(Subject, Tid, lac.75:lac.250) %>%
@@ -21,7 +21,9 @@ dat <- Data %>%
                names_prefix = "lac.",
                names_transform = list(watt = as.numeric),
                cols = lac.75:lac.250) %>%
-   filter(subject == 1,
+
+  
+   filter(Subject == 1,
          Tid == "pre",
          !is.na(laktat)) %>% # Remove NA values
   print()
