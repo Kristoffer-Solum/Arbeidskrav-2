@@ -27,8 +27,37 @@ dat <- Data %>%
          Tid == "pre",
          !is.na(laktat)) %>% # Remove NA values
   print()
-  
 
 
+dat %>%
+  ggplot(aes(watt, laktat)) + geom_point() +
   
+  geom_smooth(method = "lm", se = FALSE, 
+              formula = y ~ poly(x, 3)) 
+
+# Fit the model
+model <- lm(laktat ~ watt + I(watt^2) + I(watt^3), data = dat)
+
+summary(model)
+
+predict(model)
+  
+```
+
+
+
+
+```{r}
+
+myfun <- function(a, b) { 
+  
+  results <- a * b
+  
+  return(results)
+  
+}
+
+myfun(1,4445, 6)
+
+
 ```
