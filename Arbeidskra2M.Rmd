@@ -19,14 +19,11 @@ dat <- Data %>%
   pivot_longer(names_to = "watt",
                values_to = "laktat",
                names_prefix = "lac.",
-               names_transform = list(watt = as.numeric)) %>%
-  
-  print()
-  
-  filter(subject == 1,
+               names_transform = list(watt = as.numeric),
+               cols = lac.75:lac.250) %>%
+   filter(subject == 1,
          Tid == "pre",
          !is.na(laktat)) %>% # Remove NA values
-  
   print()
   
 
