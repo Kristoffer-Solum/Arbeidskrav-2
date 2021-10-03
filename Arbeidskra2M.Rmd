@@ -38,7 +38,7 @@ dat %>%
 # Fit the model
 model <- lm(laktat ~ watt + I(watt^2) + I(watt^3), data = dat)
 
-new_data <- data.frame(watt = seq(from = 75, to = 250, by = 0.1))
+new_data <- data.frame(watt = seq(from = 75, to = 250, by = 0.1)) # lagde tabellen fra 75- 250w slik at det skal bli mulig å sammenligne mellom solum og vetle
 
 new_data$pred <- predict(model, newdata = new_data)
 
@@ -62,19 +62,26 @@ predict(model) # kan ta bort?
 ```
 
 
-
-
 ```{r}
+lt <- function(data)  { 
+  
+  m <- lm(laktat ~ watt + I(watt^2) + I(watt^3), data = data)
+  
+  new_data <- data.frame(watt = seq(from = min(data$watt), to = max(data$watt), by = 0.01))
+  
+  new_data$pred <-predict(m, newdata = new_data)
+  
+  new_data$watt.4mmol <- abs(new_data$pred - 4)
+  
+  results <- data.frame(watt.4mmol = new_data[which.min(new_data$watt.4mmol),1])
+  
+  return(results) # figur som viser snitt av solum og vetle?
+  
 
-myfun <- function(a, b) { 
   
-  results <- a * b
-  
-  return(results)
-  
-}
-
-myfun(1,4445, 6)
+  }
 
 
 ```
+
+
