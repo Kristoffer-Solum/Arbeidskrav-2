@@ -25,7 +25,7 @@ dat <- Data %>%
   
    filter(Subject == 1,
          Tid == "pre",
-         !is.na(laktat)) %>% # Remove NA values
+         !is.na(laktat)) %>% # Remove NA values #kan ta bort filter?
   print()
 
 
@@ -33,14 +33,31 @@ dat %>%
   ggplot(aes(watt, laktat)) + geom_point() +
   
   geom_smooth(method = "lm", se = FALSE, 
-              formula = y ~ poly(x, 3)) 
+              formula = y ~ poly(x, 3)) # kan ta bort?
 
 # Fit the model
 model <- lm(laktat ~ watt + I(watt^2) + I(watt^3), data = dat)
 
-summary(model)
+new_data <- data.frame(watt = seq(from = 75, to = 250, by = 0.1))
 
-predict(model)
+new_data$pred <- predict(model, newdata = new_data)
+
+new_data$distance <- abs(new_data$pred - 4)
+
+
+
+new_data %>%
+  filter(distance == min(distance)) %>% # watt ved 4mmol <3
+  print()
+
+
+
+new_data %>%
+  ggplot(aes(watt, pred)) + geom_point()
+
+summary(model) # kan ta bort?
+
+predict(model) # kan ta bort?
   
 ```
 
