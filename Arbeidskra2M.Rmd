@@ -81,7 +81,30 @@ lt <- function(data)  {
   
   }
 
+lt(dat)
 
 ```
 
 
+```{r}
+
+dat <- Data %>%
+  select(Subject, Tid, lac.75:lac.250) %>%
+  pivot_longer(names_to = "watt",
+               values_to = "laktat",
+               names_prefix = "lac.",
+               names_transform = list(watt = as.numeric),
+               cols = lac.75:lac.250) %>%
+  
+  filter(!is.na(laktat)) %>%
+  
+  group_by(Tid, Subject) %>%
+  
+  mutate(n = n()) %>%
+  filter(n >= 4) %>%
+  
+  group_modify(~ lt(.)) %>% # fasit tabell
+  print()
+
+
+```
