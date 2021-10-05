@@ -259,17 +259,24 @@ new_data %&gt;%
   
   new_data$watt.4mmol &lt;- abs(new_data$pred - 4)
   
-  results &lt;- data.frame(watt.4mmol = new_data[which.min(new_data$watt.4mmol),1])
+  new_data$watt.2mmol &lt;- abs(new_data$pred - 2)
+  
+  
+  results &lt;- data.frame(watt.4mmol = new_data[which.min(new_data$watt.4mmol),1])  
+    
+results &lt;- data.frame(watt.2mmol = new_data[which.min(new_data$watt.2mmol),1])
   
   return(results) # figur som viser snitt av solum og vetle?
+  
+  
   
 
   
   }
 
 lt(dat)</code></pre>
-<pre><code>##   watt.4mmol
-## 1     158.85</code></pre>
+<pre><code>##   watt.2mmol
+## 1      123.3</code></pre>
 <pre class="r"><code>dat &lt;- Data %&gt;%
   select(Subject, Tid, lac.75:lac.250) %&gt;%
   pivot_longer(names_to = &quot;watt&quot;,
@@ -285,16 +292,16 @@ lt(dat)</code></pre>
   mutate(n = n()) %&gt;%
   filter(n &gt;= 4) %&gt;%
   
-  group_modify(~ lt(.)) %&gt;%
+  group_modify(~ lt(.)) %&gt;% # fasit tabell
   print()</code></pre>
 <pre><code>## # A tibble: 4 x 3
 ## # Groups:   Tid, Subject [4]
-##   Tid   Subject watt.4mmol
+##   Tid   Subject watt.2mmol
 ##   &lt;chr&gt;   &lt;dbl&gt;      &lt;dbl&gt;
-## 1 post        1       169.
-## 2 post        2       244.
-## 3 pre         1       159.
-## 4 pre         2       239.</code></pre>
+## 1 post        1       117.
+## 2 post        2       189.
+## 3 pre         1       123.
+## 4 pre         2       171.</code></pre>
 
 
 

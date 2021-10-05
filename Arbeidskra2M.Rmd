@@ -73,9 +73,18 @@ lt <- function(data)  {
   
   new_data$watt.4mmol <- abs(new_data$pred - 4)
   
-  results <- data.frame(watt.4mmol = new_data[which.min(new_data$watt.4mmol),1])
+  new_data$watt.2mmol <- abs(new_data$pred - 2)
   
-  return(results) # figur som viser snitt av solum og vetle?
+  
+  results <- data.frame(watt.4mmol = new_data[which.min(new_data$watt.4mmol),1]) %>%
+  
+  data.frame(watt.2mmol = new_data[which.min(new_data$watt.2mmol),1])
+  
+  return(results)
+
+ # figur som viser snitt av solum og vetle?
+  
+  
   
 
   
