@@ -262,11 +262,13 @@ new_data %&gt;%
   new_data$watt.2mmol &lt;- abs(new_data$pred - 2)
   
   
-  results &lt;- data.frame(watt.4mmol = new_data[which.min(new_data$watt.4mmol),1])  
-    
-results &lt;- data.frame(watt.2mmol = new_data[which.min(new_data$watt.2mmol),1])
+  results &lt;- data.frame(watt.4mmol = new_data[which.min(new_data$watt.4mmol),1]) %&gt;%
   
-  return(results) # figur som viser snitt av solum og vetle?
+  data.frame(watt.2mmol = new_data[which.min(new_data$watt.2mmol),1])
+  
+  return(results)
+
+ # figur som viser snitt av solum og vetle?
   
   
   
@@ -275,9 +277,11 @@ results &lt;- data.frame(watt.2mmol = new_data[which.min(new_data$watt.2mmol),1]
   }
 
 lt(dat)</code></pre>
-<pre><code>##   watt.2mmol
-## 1      123.3</code></pre>
-<pre class="r"><code>dat &lt;- Data %&gt;%
+<pre><code>##   watt.4mmol watt.2mmol
+## 1     158.85      123.3</code></pre>
+<pre class="r"><code>library(tidyverse)
+
+dat &lt;- Data %&gt;%
   select(Subject, Tid, lac.75:lac.250) %&gt;%
   pivot_longer(names_to = &quot;watt&quot;,
                values_to = &quot;laktat&quot;,
@@ -294,14 +298,32 @@ lt(dat)</code></pre>
   
   group_modify(~ lt(.)) %&gt;% # fasit tabell
   print()</code></pre>
-<pre><code>## # A tibble: 4 x 3
+<pre><code>## # A tibble: 4 x 4
 ## # Groups:   Tid, Subject [4]
-##   Tid   Subject watt.2mmol
-##   &lt;chr&gt;   &lt;dbl&gt;      &lt;dbl&gt;
-## 1 post        1       117.
-## 2 post        2       189.
-## 3 pre         1       123.
-## 4 pre         2       171.</code></pre>
+##   Tid   Subject watt.4mmol watt.2mmol
+##   &lt;chr&gt;   &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1 post        1       169.       117.
+## 2 post        2       244.       189.
+## 3 pre         1       159.       123.
+## 4 pre         2       239.       171.</code></pre>
+<pre class="r"><code>Data2 &lt;- read_excel(&quot;Data2.xlsx&quot;,na = &quot;NA&quot;) %&gt;%
+  mutate(diff = post - pre) %&gt;%
+  
+
+  
+  summarise(s = sd(diff) %&gt;%
+              print()
+            
+            ,
+            te = s / sqrt(2),
+            m = mean(c(pre, post)),
+            cv = (te / m) * 100) </code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>cv &lt;- round(Data2$cv, 2)
+
+Standardavik &lt;- round(Data2$s, 2)</code></pre>
+<p>Standardfeilen i studien var NA %.</p>
+<p>Standardaviket i studien var NA</p>
 
 
 
