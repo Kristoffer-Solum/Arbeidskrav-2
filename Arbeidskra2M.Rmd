@@ -7,7 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE} 
 library(tidyverse)
   
 
@@ -62,7 +62,7 @@ predict(model) # kan ta bort?
 ```
 
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 lt <- function(data)  { 
   
   m <- lm(laktat ~ watt + I(watt^2) + I(watt^3), data = data)
@@ -95,7 +95,7 @@ lt(dat)
 ```
 
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
 library(tidyverse)
 
@@ -122,7 +122,7 @@ dat <- Data %>%
 
 ```
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
 lac1 <- dat %>%
   group_by(Subject) %>%
@@ -156,29 +156,26 @@ TE2 <- lac1 %>%
 
 
 
+cv4 <- round(TE4$cv, 2)
+
+Standardavik4 <- round(TE4$s, 2)
+
+cv2 <- round(TE2$cv, 2)
+
+Standardavik2 <- round(TE2$s, 2)
 
 ```
 
 
 
-```{r}
-Data2 <- read_excel("Data2.xlsx",na = "NA") %>%
-  mutate(diff = post - pre) %>%
-  ungroup() %>%
-  summarise(s = sd(diff, na.rm = TRUE),
-            te = s / sqrt(2),
-            m = mean(c(pre, post)),
-            cv = (te / m) * 100) %>%
-  print()
 
 
-cv <- round(Data2$cv, 2)
+Standardfeilen i studien ved 4mmol var `r cv4` %.
 
-Standardavik <- round(Data2$s, 2)
+Standardaviket i studien var 4mmol `r Standardavik4` 
+
+Standardfeilen i studien ved 2mmol var `r cv2` %.
+
+Standardaviket i studien var 2mmol `r Standardavik2` 
 
 
-```
-
-Standardfeilen i studien var `r cv` %.
-
-Standardaviket i studien var `r Standardavik` 
