@@ -1,6 +1,6 @@
 ---
 title: "Arbeidskrav-2"
-author: "Kristoffer Solum"
+author: "Kristoffer Solum, Karen Grøndalen, Vetle Sælen"
 date: "28 9 2021"
 output: html_document
 editor_options: 

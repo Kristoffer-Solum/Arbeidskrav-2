@@ -1,0 +1,20 @@
+---
+title: "Arbeidskrav 2 oppgave 2 DNA"
+author: "Vetle Sælen"
+date: "5 10 2021"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+
+library(tidyverse)
+
+library(readxl)
+
+DNA <- read_excel("dna-gel-data.xlsx") %>%
+print()
+
+```
+
