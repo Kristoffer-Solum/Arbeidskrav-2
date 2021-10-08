@@ -169,12 +169,12 @@ Standardavik2 <- round(TE2$s, 2)
 
 
 
-Standardfeilen i studien ved 4mmol var `r cv4` %.
+Standardfeilen i studien ved 4-mmol/l var `r cv4` %.
 
-Standardaviket i studien var 4mmol `r Standardavik4` 
+Standardaviket i studien ved 4-mmol/l `r Standardavik4` 
 
-Standardfeilen i studien ved 2mmol var `r cv2` %.
+Standardfeilen i studien ved 2-mmol/l var `r cv2` %.
 
-Standardaviket i studien var 2mmol `r Standardavik2` 
+Standardaviket i studien ved 2-mmol/l `r Standardavik2` 
 
 

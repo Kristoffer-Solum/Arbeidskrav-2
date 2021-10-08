@@ -1,0 +1,49 @@
+---
+title: "Arbeidskrav 2 oppgave 3"
+author: "Karen Grøndalen, Vetle Sælen, Kristoffer Solum"
+date: "8 10 2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+library(tidyverse)
+library(exscidata)
+data("hypertrophy")
+
+glimpse(hypertrophy)
+
+
+dat <- hypertrophy %>%
+  select (PARTICIPANT, DXA_LBM_T1:DXA_LBM_T3,BICEPS_T1:BICEPS_T3)%>%
+
+  pivot_longer(names_to = "variable",
+      values_to = "value",
+      cols = DXA_LBM_T1:BICEPS_T3)%>%
+  
+  
+  mutate(variable = gsub("_LBM", "", variable))%>%
+   
+  separate(variable, into = c("variable", "time"), sep = "_")%>%
+   
+  pivot_wider(names_from = variable, 
+              values_from = value)%>%
+
+
+pivot_wider(names_from = time, values_from = c(DXA,BICEPS))%>%
+  
+  mutate(DXA_change = DXA_T3 - DXA_T1,
+         BICEPS_change = BICEPS_T3 - BICEPS_T1)%>%
+print()
+  
+# Fit the model 
+
+m1 <- lm(DXA_change ~ BICEPS_change, data = dat)
+
+summary(m1)
+
+
+
+
+```
+
