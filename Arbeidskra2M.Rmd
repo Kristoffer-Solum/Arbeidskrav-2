@@ -25,7 +25,7 @@ dat <- Data %>%
   
    filter(Subject == 1,
          Tid == "pre",
-         !is.na(laktat)) %>% # Remove NA values #kan ta bort filter?
+         !is.na(laktat)) %>% # Remove NA values 
   print()
 
 
@@ -33,12 +33,11 @@ dat %>%
   ggplot(aes(watt, laktat)) + geom_point() +
   
   geom_smooth(method = "lm", se = FALSE, 
-              formula = y ~ poly(x, 3)) # kan ta bort?
-
+              formula = y ~ poly(x, 3)) 
 # Fit the model
 model <- lm(laktat ~ watt + I(watt^2) + I(watt^3), data = dat)
 
-new_data <- data.frame(watt = seq(from = 75, to = 250, by = 0.1)) # lagde tabellen fra 75- 250w slik at det skal bli mulig å sammenligne mellom solum og vetle
+new_data <- data.frame(watt = seq(from = 75, to = 250, by = 0.1)) 
 
 new_data$pred <- predict(model, newdata = new_data)
 
@@ -47,7 +46,7 @@ new_data$distance <- abs(new_data$pred - 4)
 
 
 new_data %>%
-  filter(distance == min(distance)) %>% # watt ved 4mmol <3
+  filter(distance == min(distance)) %>% 
   print()
 
 
@@ -55,9 +54,9 @@ new_data %>%
 new_data %>%
   ggplot(aes(watt, pred)) + geom_point()
 
-summary(model) # kan ta bort?
+summary(model) 
 
-predict(model) # kan ta bort?
+predict(model) 
   
 ```
 
@@ -82,7 +81,7 @@ lt <- function(data)  {
   
   return(results)
 
- # figur som viser snitt av solum og vetle?
+ 
   
   
   
@@ -114,7 +113,7 @@ dat <- Data %>%
   mutate(n = n()) %>%
   filter(n >= 4) %>%
   
-  group_modify(~ lt(.)) %>% # fasit tabell
+  group_modify(~ lt(.)) %>% 
   print()
 
 

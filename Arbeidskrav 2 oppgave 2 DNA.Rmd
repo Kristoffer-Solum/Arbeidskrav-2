@@ -1,20 +1,40 @@
 ---
 title: "Arbeidskrav 2 oppgave 2 DNA"
-author: "Vetle Sælen"
+author: "Vetle Sælen, Karen Grøndalen, Kristoffer Solum"
 date: "5 10 2021"
 output: html_document
 editor_options: 
   chunk_output_type: console
 ---
 
-```{r setup, include=FALSE}
 
-library(tidyverse)
+```{r}
 
-library(readxl)
+# Create a data frame of known distances and molecular weights
+ladder <- data.frame(dist = c(238, 348, 376,
+                              408, 447,  492,  
+                              553,    623,  722,
+                              780,    850,  932,  1030), 
+                     mw = c(1000, 900, 800, 
+                            700, 600, 500,
+                            400, 300, 250, 
+                            200, 150, 100, 50))
+            
 
-DNA <- read_excel("dna-gel-data.xlsx") %>%
-print()
+# Create a new data frame of unknowns
+unknown <- data.frame(dist = c(434,   600,  689,
+                               429,   590, 676, 425, 587, 673, 593, 428, 675))
+
+# Fit the model
+cal <- lm(log(mw) ~ dist, data = ladder)
+
+# Check model performance, R^2 should be ~ 1.
+summary(cal)
+
+preds <- exp(predict(cal, newdata = unknown) )
+
+
 
 ```
+
 
