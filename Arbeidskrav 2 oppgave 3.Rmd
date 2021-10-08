@@ -47,3 +47,11 @@ summary(m1)
 
 ```
 
+# resultat og diskusjon
+
+I denne oppgaven har man sett på sammenhengen mellom økning i størrelsen på biceps og lean body mass. Hvor man kan se at den det er stor spredning i hvor mye økning man får størrelse på biceps. Hvor den med minst økning har en nedgang på -2,6 og den som har største økning har en økning på 2,2. Den estimerte endringen man bør kunne forvente er 2,3 og standardfeilen er på 0,7. P-verdien for testingen av sammenhengen mellom økning i størrelse på biceps og lean body mass var og signifikant (p= 0,003), T- verdien var og signifikant (t= 3,28), noe som og peker mot at det kan være en sammenheng mellom dem. 
+
+P-verdien forteller noe om hvor stor sannsynligheten er for at den observerte forskjellen mellom datasettene skyldes tilfeldigheter. Når man tester nullhypoteser må man sette et nivå av hvor mye forskningsfeil man kan akseptere at det er, det vanlige er å sette denne grensen på 5%. Dette betyr at hvis nullhypotesen er sann, godtar vi at det er 5% sjanse for å gjøre en forkastningsfeil. T- verdien forteller noe om størrelsen på differansen i forhold til variasjonen i et datasett, det er den beregnede forskjellen representert i enheter med standardfeil. Dette betyr at jo større størrelsen på T er, jo større er sannsynligheten for at det er en betydelig forskjell. Standardfeilen er en måte å angi feilmarginen med en måling eller et estimat på. Jo større utvalget er, jo lavere vil ofte standardfeilen være. Dette kan og brukes til å teste reliabiliteten med forsøkene. 
+
+I denne oppgaven ser man at det er en liten standardfeil, og har signifikante t og p verdier. Dette betyr at det kan være en sammenheng mellom lean body mass og økningen i størrelsen på biceps, og at det ikke er mye feilmargin i målingene. 
+

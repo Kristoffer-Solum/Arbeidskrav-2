@@ -5,6 +5,8 @@ date: "5 10 2021"
 output: html_document
 editor_options: 
   chunk_output_type: console
+  bibliography: references.bib
+  csl: biomed-central.csl 
 ---
 
 
@@ -33,8 +35,29 @@ summary(cal)
 
 preds <- exp(predict(cal, newdata = unknown) )
 
+preds
+
+
 
 
 ```
 
 
+# Diskusjon
+
+Vi ekstrahert DNA fra blodprøve og basert på protokollen til Barlett, J. M. S & Stirling (2003), PCR protocols, Ch. 6. og analysert dataene for å se på molekylærvekten ved å se hvor langt de har vandret ned «stigen». Vi har sammenlignet våre resultater med dataene fra Shadock, I., et al. (2015). Fra våre resultater kan man se at molekylærvekten ikke er eksakt slik den fremstår i rapporten til Shadock I., et al. (2015) (690-bp kontroll, 318-bp X allele og 413-bp R allele), men at relasjonen mellom vektene er nokså lik. Avviket kan komme av at bildet ikke har vært 100% horisontalt ved målingene, eller eventuelle feil gjort fra protokollen. 
+
+
+# Referanser
+
+@article{Schadock2015,
+title = {Simple Method to Genotype the {ACTN}3 r577x Polymorphism}
+  doi = {10.1089/gtmb.2014.0299},
+  url = {https://doi.org/10.1089/gtmb.2014.0299},
+  year = {2015},
+  author = {Ines Schadock and Augusto Schneider and Elton Dias Silva and Marcia Rubia Duarte Buchweitz and Marcio Nunes Correa and Joao Bosco Pesquero and Edgar Julian Paredes-Gamero and Ronaldo Carvalho Araujo and Carlos Castilho Barros},
+} 
+
+
+
+```{r}

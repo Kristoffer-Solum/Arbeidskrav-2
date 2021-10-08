@@ -7,7 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE} 
+```{r, setup, include=FALSE, echo=FALSE, message=FALSE, warning=FALSE} 
 library(tidyverse)
   
 
@@ -26,8 +26,8 @@ dat <- Data %>%
    filter(Subject == 1,
          Tid == "pre",
          !is.na(laktat)) %>% # Remove NA values 
-  print()
-
+  
+print()
 
 dat %>%
   ggplot(aes(watt, laktat)) + geom_point() +
@@ -47,8 +47,8 @@ new_data$distance <- abs(new_data$pred - 4)
 
 new_data %>%
   filter(distance == min(distance)) %>% 
-  print()
-
+  
+print()
 
 
 new_data %>%
@@ -114,8 +114,8 @@ dat <- Data %>%
   filter(n >= 4) %>%
   
   group_modify(~ lt(.)) %>% 
-  print()
-
+  
+print()
 
 
 
@@ -139,7 +139,7 @@ TE4 <- lac1 %>%
             te = s / sqrt(2), 1,
             cv = 100 * (te / m), 1,
             L = qt(0.975, 4) * s) %>%
-  print()
+print()  
 
 
 TE2 <- lac1 %>%
@@ -151,7 +151,7 @@ TE2 <- lac1 %>%
             te = s / sqrt(2), 1,
             cv = 100 * (te / m), 1,
             L = qt(0.975, 4) * s) %>%
-  print()
+print()
 
 
 
